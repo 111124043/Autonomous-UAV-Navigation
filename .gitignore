@@ -1,0 +1,26 @@
+# Git backup
+.git_backup/
+
+# ROS 2 / Colcon
+build/
+install/
+log/
+
+# ROS 2 Python cache
+__pycache__/
+*.pyc
+
+# Python
+*.egg-info/
+.pytest_cache/
+
+# IDE / editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local archive
+archive/

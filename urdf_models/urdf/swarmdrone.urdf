@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="swarmdrone">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.052099 0.1036 0.13079" rpy="0 0 0" />
+      <mass value="0.75873" />
+      <inertia ixx="0.00031091" ixy="2.8345E-07" ixz="3.5555E-09" iyy="0.00062664" iyz="-3.1582E-08" izz="0.00051493" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://swarmdrone/meshes/base_link.STL" />
+      </geometry>
+      <material name="grey"><color rgba="0.79 0.81 0.93 1" /></material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://swarmdrone/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="prop1">
+    <inertial>
+      <origin xyz="0 0.0052117 0" rpy="0 0 0" />
+      <mass value="0.0061064" />
+      <inertia ixx="4.7646E-06" ixy="0" ixz="-1.8753E-09" iyy="4.8671E-06" iyz="0" izz="1.5658E-07" />
+    </inertial>
+    <visual>
+      <geometry><mesh filename="package://swarmdrone/meshes/prop1.STL" /></geometry>
+      <material name="red"><color rgba="0.75 0 0 1" /></material>
+    </visual>
+    <collision>
+      <geometry><mesh filename="package://swarmdrone/meshes/prop1.STL" /></geometry>
+    </collision>
+  </link>
+
+  <joint name="prop1_joint" type="continuous">
+    <origin xyz="0.16722 -0.011705 0.11613" rpy="1.5708 0 -2.3605" />
+    <parent link="base_link" />
+    <child link="prop1" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <link name="prop2">
+    <inertial>
+      <origin xyz="0 0.0052118 0" rpy="0 0 0" />
+      <mass value="0.0061063" />
+      <inertia ixx="4.7651E-06" ixy="0" ixz="1.8956E-09" iyy="4.8676E-06" iyz="0" izz="1.5657E-07" />
+    </inertial>
+    <visual>
+      <geometry><mesh filename="package://swarmdrone/meshes/prop2.STL" /></geometry>
+      <material name="red"><color rgba="0.75 0 0 1" /></material>
+    </visual>
+    <collision>
+      <geometry><mesh filename="package://swarmdrone/meshes/prop2.STL" /></geometry>
+    </collision>
+  </link>
+
+  <joint name="prop2_joint" type="continuous">
+    <origin xyz="0.16722 -0.24975 0.11613" rpy="1.5708 0 2.3934" />
+    <parent link="base_link" />
+    <child link="prop2" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <link name="prop3">
+    <inertial>
+      <origin xyz="0 0.0052117 0" rpy="0 0 0" />
+      <mass value="0.0061064" />
+      <inertia ixx="4.7646E-06" ixy="0" ixz="-1.8748E-09" iyy="4.8671E-06" iyz="0" izz="1.5658E-07" />
+    </inertial>
+    <visual>
+      <geometry><mesh filename="package://swarmdrone/meshes/prop3.STL" /></geometry>
+      <material name="red"><color rgba="0.75 0 0 1" /></material>
+    </visual>
+    <collision>
+      <geometry><mesh filename="package://swarmdrone/meshes/prop3.STL" /></geometry>
+    </collision>
+  </link>
+
+  <joint name="prop3_joint" type="continuous">
+    <origin xyz="-0.070824 -0.24975 0.11613" rpy="1.5708 0 -2.3356" />
+    <parent link="base_link" />
+    <child link="prop3" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <link name="prop4">
+    <inertial>
+      <origin xyz="0 0.0052117 0" rpy="0 0 0" />
+      <mass value="0.0061064" />
+      <inertia ixx="4.7646E-06" ixy="0" ixz="-1.8753E-09" iyy="4.8671E-06" iyz="0" izz="1.5658E-07" />
+    </inertial>
+    <visual>
+      <geometry><mesh filename="package://swarmdrone/meshes/prop4.STL" /></geometry>
+      <material name="white"><color rgba="1 1 1 1" /></material>
+    </visual>
+    <collision>
+      <geometry><mesh filename="package://swarmdrone/meshes/prop4.STL" /></geometry>
+    </collision>
+  </link>
+
+  <joint name="prop4_joint" type="continuous">
+    <origin xyz="-0.070824 -0.0117 0.11613" rpy="1.5708 0 2.3633" />
+    <parent link="base_link" />
+    <child link="prop4" />
+    <axis xyz="0 1 0" />
+  </joint>
+</robot>
