@@ -1,0 +1,397 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+
+<world name="default">
+
+  <!-- ============================= -->
+  <!-- PHYSICS -->
+  <!-- ============================= -->
+
+  <physics type="ode">
+    <max_step_size>0.001</max_step_size>
+    <real_time_factor>1.0</real_time_factor>
+    <real_time_update_rate>1000</real_time_update_rate>
+  </physics>
+
+  <gravity>0 0 -9.81</gravity>
+
+  <!-- ============================= -->
+  <!-- SCENE -->
+  <!-- ============================= -->
+
+  <scene>
+    <ambient>0.7 0.7 0.7 1</ambient>
+    <background>0.25 0.25 0.25 1</background>
+    <shadows>false</shadows>
+  </scene>
+
+  <!-- ============================= -->
+  <!-- SUN -->
+  <!-- ============================= -->
+
+  <light name="sun" type="directional">
+    <cast_shadows>false</cast_shadows>
+    <pose>0 0 20 0 0 0</pose>
+    <diffuse>1 1 1 1</diffuse>
+    <specular>0.2 0.2 0.2 1</specular>
+    <direction>-0.3 0.1 -1</direction>
+  </light>
+
+  <!-- ============================= -->
+  <!-- INDOOR LIGHTS -->
+  <!-- ============================= -->
+
+  <light name="light1" type="point">
+    <pose>-4 -4 6 0 0 0</pose>
+    <diffuse>1 1 1 1</diffuse>
+    <attenuation>
+      <range>40</range>
+      <constant>0.8</constant>
+      <linear>0.01</linear>
+      <quadratic>0.001</quadratic>
+    </attenuation>
+  </light>
+
+  <light name="light2" type="point">
+    <pose>4 4 6 0 0 0</pose>
+    <diffuse>1 1 1 1</diffuse>
+    <attenuation>
+      <range>40</range>
+      <constant>0.8</constant>
+      <linear>0.01</linear>
+      <quadratic>0.001</quadratic>
+    </attenuation>
+  </light>
+
+  <!-- ============================= -->
+  <!-- FLOOR -->
+  <!-- ============================= -->
+
+  <model name="base_floor">
+
+    <static>true</static>
+
+    <pose>0 0 -0.05 0 0 0</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>10 10 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>10 10 0.1</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.18 0.18 0.18 1</ambient>
+          <diffuse>0.22 0.22 0.22 1</diffuse>
+          <specular>0.02 0.02 0.02 1</specular>
+        </material>
+
+      </visual>
+
+    </link>
+
+  </model>
+
+  <!-- ============================= -->
+  <!-- OPTICAL FLOW LINES -->
+  <!-- ============================= -->
+
+  <!-- Horizontal -->
+
+  <model name="line_red">
+    <static>true</static>
+    <pose>0 0 0.01 0 0 0</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>10 0.12 0.02</size></box></geometry>
+        <material>
+          <ambient>0.8 0 0 1</ambient>
+          <diffuse>0.9 0 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="line_green">
+    <static>true</static>
+    <pose>0 2 0.01 0 0 0</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>10 0.12 0.02</size></box></geometry>
+        <material>
+          <ambient>0 0.6 0 1</ambient>
+          <diffuse>0 0.8 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="line_blue">
+    <static>true</static>
+    <pose>0 -2 0.01 0 0 0</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>10 0.12 0.02</size></box></geometry>
+        <material>
+          <ambient>0 0 0.7 1</ambient>
+          <diffuse>0 0 0.9 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="line_orange">
+    <static>true</static>
+    <pose>0 4 0.01 0 0 0</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>10 0.12 0.02</size></box></geometry>
+        <material>
+          <ambient>0.8 0.4 0 1</ambient>
+          <diffuse>0.9 0.5 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="line_cyan">
+    <static>true</static>
+    <pose>0 -4 0.01 0 0 0</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>10 0.12 0.02</size></box></geometry>
+        <material>
+          <ambient>0 0.7 0.7 1</ambient>
+          <diffuse>0 0.9 0.9 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <!-- Vertical -->
+
+  <model name="line_yellow">
+    <static>true</static>
+    <pose>0 0 0.011 0 0 1.5707</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>10 0.12 0.02</size></box></geometry>
+        <material>
+          <ambient>0.8 0.8 0 1</ambient>
+          <diffuse>0.9 0.9 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="line_magenta">
+    <static>true</static>
+    <pose>2 0 0.011 0 0 1.5707</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>10 0.12 0.02</size></box></geometry>
+        <material>
+          <ambient>0.5 0 0.5 1</ambient>
+          <diffuse>0.7 0 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="line_teal">
+    <static>true</static>
+    <pose>-2 0 0.011 0 0 1.5707</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>10 0.12 0.02</size></box></geometry>
+        <material>
+          <ambient>0 0.5 0.5 1</ambient>
+          <diffuse>0 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <!-- Diagonal -->
+
+  <model name="diag1">
+    <static>true</static>
+    <pose>0 0 0.012 0 0 0.785</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>14 0.1 0.02</size></box></geometry>
+        <material>
+          <ambient>0.3 0.8 0.2 1</ambient>
+          <diffuse>0.4 0.9 0.3 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="diag2">
+    <static>true</static>
+    <pose>0 0 0.013 0 0 -0.785</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>14 0.1 0.02</size></box></geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.9 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <!-- ============================= -->
+  <!-- WALLS -->
+  <!-- ============================= -->
+
+  <!-- Blue -->
+  <model name="north_wall">
+    <static>true</static>
+    <pose>0 5 2.5 0 0 0</pose>
+    <link name="link">
+      <collision name="collision">
+        <geometry><box><size>10 0.1 5</size></box></geometry>
+      </collision>
+      <visual name="visual">
+        <geometry><box><size>10 0.1 5</size></box></geometry>
+        <material>
+          <ambient>0 0 0.5 1</ambient>
+          <diffuse>0 0 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <!-- Green -->
+  <model name="south_wall">
+    <static>true</static>
+    <pose>0 -5 2.5 0 0 0</pose>
+    <link name="link">
+      <collision name="collision">
+        <geometry><box><size>10 0.1 5</size></box></geometry>
+      </collision>
+      <visual name="visual">
+        <geometry><box><size>10 0.1 5</size></box></geometry>
+        <material>
+          <ambient>0 0.4 0 1</ambient>
+          <diffuse>0 0.6 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <!-- Red -->
+  <model name="east_wall">
+    <static>true</static>
+    <pose>5 0 2.5 0 0 0</pose>
+    <link name="link">
+      <collision name="collision">
+        <geometry><box><size>0.1 10 5</size></box></geometry>
+      </collision>
+      <visual name="visual">
+        <geometry><box><size>0.1 10 5</size></box></geometry>
+        <material>
+          <ambient>0.5 0 0 1</ambient>
+          <diffuse>0.7 0 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <!-- Purple -->
+  <model name="west_wall">
+    <static>true</static>
+    <pose>-5 0 2.5 0 0 0</pose>
+    <link name="link">
+      <collision name="collision">
+        <geometry><box><size>0.1 10 5</size></box></geometry>
+      </collision>
+      <visual name="visual">
+        <geometry><box><size>0.1 10 5</size></box></geometry>
+        <material>
+          <ambient>0.35 0 0.45 1</ambient>
+          <diffuse>0.5 0 0.6 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <!-- ============================= -->
+  <!-- PILLARS -->
+  <!-- ============================= -->
+
+  <model name="pillar1">
+    <static>true</static>
+    <pose>2 2 2.5 0 0 0</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><cylinder><radius>0.25</radius><length>5</length></cylinder></geometry>
+        <material>
+          <ambient>0.6 0 0.6 1</ambient>
+          <diffuse>0.8 0 0.8 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="pillar2">
+    <static>true</static>
+    <pose>-2 -2 2.5 0 0 0</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><cylinder><radius>0.25</radius><length>5</length></cylinder></geometry>
+        <material>
+          <ambient>0 0.5 0.5 1</ambient>
+          <diffuse>0 0.7 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <!-- ============================= -->
+  <!-- CUBES -->
+  <!-- ============================= -->
+
+  <model name="cube1">
+    <static>true</static>
+    <pose>1.5 -1.5 0.5 0 0 0</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>1 1 1</size></box></geometry>
+        <material>
+          <ambient>0 0.4 0 1</ambient>
+          <diffuse>0 0.6 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="cube2">
+    <static>true</static>
+    <pose>-1.5 1.5 0.75 0 0 0</pose>
+    <link name="link">
+      <visual name="visual">
+        <geometry><box><size>1.5 1.5 1.5</size></box></geometry>
+        <material>
+          <ambient>0.4 0 0.5 1</ambient>
+          <diffuse>0.6 0 0.7 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+</world>
+
+</sdf>
